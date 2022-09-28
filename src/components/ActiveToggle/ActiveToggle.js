@@ -6,13 +6,11 @@ function ActiveToggle() {
 
   function boxColorHandler() {
     setActive(!active);
-    const boxEl = document.querySelector(".box");
-    return boxEl.classList.toggle("box--active");
   }
 
   return (
     <main>
-      <div className="box" />
+      <div className={`box ${active ? "box--active" : ""}`} />
       <button type="button" onClick={boxColorHandler}>
         {!active ? "Activate" : "Deactivate"}
       </button>
