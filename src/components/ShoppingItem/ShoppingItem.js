@@ -1,7 +1,12 @@
+import { useState } from "react";
 import "./ShoppingItem.css";
 
 function ShoppingItem({ name, price }) {
-  const amount = 1;
+  const [amount, setAmount] = useState(1);
+
+  function amountButtonsHandler(operator) {
+    operator === "-" ? setAmount(amount - 1) : setAmount(amount + 1);
+  }
 
   return (
     <section className="item">
@@ -9,10 +14,22 @@ function ShoppingItem({ name, price }) {
       <p>price: {price}</p>
       <p>amount: {amount}</p>
       <p>total: {price * amount}</p>
-      <button className="item__button" type="button">
+      <button
+        className="item__button"
+        type="button"
+        onClick={() => {
+          amountButtonsHandler("-");
+        }}
+      >
         -
       </button>
-      <button className="item__button" type="button">
+      <button
+        className="item__button"
+        type="button"
+        onClick={() => {
+          amountButtonsHandler("+");
+        }}
+      >
         +
       </button>
     </section>
